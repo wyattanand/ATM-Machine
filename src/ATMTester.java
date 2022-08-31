@@ -38,5 +38,9 @@ System.out.println(chase.checkBalance(21504)); // Should be 0.0
 chase.withdrawMoney(00002, 2020.2);
 System.out.println(chase.checkBalance(00002)); // Should be 634.1 and 
 
+chase.closeAccount(00002);
+chase.closeAccount(01337);
+System.out.println(chase.withdrawMoney(01337, 200)); // Should be false
+System.out.println(chase.withdrawMoney(00002, 200)); // Should be true
 }
 }

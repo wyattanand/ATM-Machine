@@ -10,7 +10,7 @@ public class ATM {
 	}
 	public void closeAccount(int x) {
 		if (accounts.containsKey(x)) {
-			if (accounts.get(x) <= 0) {
+			if (accounts.get(x) == 0) {
 				accounts.remove(x);
 			}
 		}
