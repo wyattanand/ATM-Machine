@@ -1,25 +1,22 @@
 import java.util.HashMap;
 public class ATM {
 	HashMap<Integer, Double> accounts = new HashMap<Integer, Double>();
-	private int Num;
-	private double Bal;
 	public void openAccount(int x) {
-		Num = x;
+		accounts.put(x, 0.0);
 	}
 	public void openAccount(int x, double y) {
-		Num = x;
-		Bal = y;
+		accounts.put(x, y);
 	}
 	public void closeAccount(int x) {
 		if (accounts.containsKey(x)) {
-			if (Bal <= 0) {
+			if (accounts.get(x) <= 0) {
 				accounts.remove(x);
 			}
 		}
 	}
 	public double checkBalance(int x) {
 		if (accounts.containsKey(x)) {
-			return Bal;
+			return accounts.get(x);
 		}
 		return 0.0;
 	}
@@ -31,7 +28,7 @@ public class ATM {
 		return false;
 	}
 	public boolean withdrawMoney(int x, double d) {
-		if (accounts.containsKey(x)) {
+		if (accounts.containsKey(x) && d <= accounts.get(x) && d >= 0) {
 			accounts.put(x, accounts.get(x)-d);
 			return true;
 		}
