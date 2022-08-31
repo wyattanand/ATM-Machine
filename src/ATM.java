@@ -1,4 +1,5 @@
 import java.util.HashMap;
+import java.math.*;
 public class ATM {
 	HashMap<Integer, Double> accounts = new HashMap<Integer, Double>();
 	public void openAccount(int x) {
@@ -16,12 +17,12 @@ public class ATM {
 	}
 	public double checkBalance(int x) {
 		if (accounts.containsKey(x)) {
-			return accounts.get(x);
+			return Math.round(100*accounts.get(x)) / 100.0;
 		}
 		return 0.0;
 	}
 	public boolean depositMoney(int x, double d) {
-		if (accounts.containsKey(x)) {
+		if (accounts.containsKey(x) && d >= 0) {
 			accounts.put(x, accounts.get(x)+d);
 			return true;
 		}
